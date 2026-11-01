@@ -1,0 +1,467 @@
+:root {
+  --fond: #eef1f5;
+  --surface: #ffffff;
+  --encre: #17233a;
+  --texte-doux: #5a6579;
+  --bord: #d6dce5;
+  --accent: #24427a;
+
+  --envoyee: #3d6fd6;
+  --entretien: #c4870f;
+  --refusee: #b44c4c;
+  --acceptee: #2c8a58;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: "Public Sans", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--envoyee);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  border: 1px solid var(--bord);
+  background: var(--surface);
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover {
+  border-color: var(--encre);
+}
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--encre);
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+.btn-discret {
+  border-color: transparent;
+  background: transparent;
+  padding: 6px 10px;
+  font-weight: 500;
+  color: var(--texte-doux);
+}
+.btn-discret:hover {
+  color: var(--encre);
+  border-color: var(--bord);
+}
+.danger:hover {
+  color: var(--refusee);
+}
+.lien {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.erreur {
+  color: var(--refusee);
+  background: #fbeeee;
+  border-left: 3px solid var(--refusee);
+  padding: 8px 12px;
+  margin: 0;
+}
+
+/* ---------- Formulaires ---------- */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+input, select, textarea {
+  border: 1px solid var(--bord);
+  border-radius: 6px;
+  padding: 9px 11px;
+  background: var(--surface);
+  font-weight: 400;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+}
+
+/* ---------- Connexion ---------- */
+.auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+.auth-intro h1 {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.auth-intro p {
+  color: var(--texte-doux);
+  font-size: 18px;
+  max-width: 32ch;
+}
+.auth-card {
+  background: var(--surface);
+  border: 1px solid var(--bord);
+  border-radius: 10px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.auth-card h2 {
+  font-size: 22px;
+}
+
+/* ---------- Page principale ---------- */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+.entete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.entete h1 {
+  font-size: 22px;
+}
+.utilisateur {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--texte-doux);
+}
+
+/* ---------- Statistiques ---------- */
+.stats {
+  background: var(--surface);
+  border: 1px solid var(--bord);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.barre {
+  display: flex;
+  height: 10px;
+  background: var(--bord);
+}
+.segment {
+  display: block;
+  flex-basis: 0;
+  transition: flex-grow 0.4s ease;
+}
+.st-ENVOYEE { background: var(--envoyee); }
+.st-ENTRETIEN { background: var(--entretien); }
+.st-REFUSEE { background: var(--refusee); }
+.st-ACCEPTEE { background: var(--acceptee); }
+
+.filtres {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.filtre {
+  border: none;
+  border-right: 1px solid var(--bord);
+  background: none;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid transparent;
+}
+.filtre:last-child {
+  border-right: none;
+}
+.filtre strong {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+.filtre span {
+  color: var(--texte-doux);
+  font-size: 14px;
+  margin-top: 6px;
+}
+.filtre:hover {
+  background: #f6f8fb;
+}
+.filtre.actif {
+  background: #f6f8fb;
+  border-top-color: var(--encre);
+}
+.f-ENVOYEE.actif { border-top-color: var(--envoyee); }
+.f-ENTRETIEN.actif { border-top-color: var(--entretien); }
+.f-REFUSEE.actif { border-top-color: var(--refusee); }
+.f-ACCEPTEE.actif { border-top-color: var(--acceptee); }
+
+/* ---------- Liste ---------- */
+.barre-outils {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.barre-outils h2 {
+  font-size: 18px;
+}
+
+.tableau {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--bord);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.tableau th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texte-doux);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--bord);
+}
+.tableau td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--bord);
+  vertical-align: middle;
+}
+.tableau tr:last-child td {
+  border-bottom: none;
+}
+.offre {
+  display: block;
+  font-size: 13px;
+  color: var(--accent);
+}
+.cellule-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.pastille {
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pastille option {
+  color: var(--encre);
+  background: #fff;
+}
+
+.vide {
+  background: var(--surface);
+  border: 1px dashed var(--bord);
+  border-radius: 10px;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--texte-doux);
+}
+
+/* ---------- Fenêtre d'ajout ---------- */
+.modal-fond {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 35, 58, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 10;
+}
+.modal {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 24px;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.modal h2 {
+  font-size: 20px;
+}
+.grille {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ---------- Aide sous un champ ---------- */
+.aide {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--texte-doux);
+}
+
+/* ---------- Relances ---------- */
+.relances {
+  background: #fdf6e7;
+  border: 1px solid #ecd6a4;
+  border-left: 4px solid var(--entretien);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.relances h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.relances ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.relances li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid #ecd6a4;
+}
+.relances li:first-child {
+  border-top: none;
+}
+.quand {
+  display: block;
+  font-size: 14px;
+  color: #7a5408;
+}
+.relance-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.relance-actions a {
+  color: var(--accent);
+  font-size: 14px;
+}
+.a-relancer {
+  color: #8a5d05;
+  font-weight: 600;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .auth {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .auth-intro h1 {
+    font-size: 32px;
+  }
+  .filtres {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .filtre {
+    border-bottom: 1px solid var(--bord);
+    padding: 14px;
+  }
+  .filtre strong {
+    font-size: 24px;
+  }
+  .barre-outils {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .grille {
+    grid-template-columns: 1fr;
+  }
+  .tableau thead {
+    display: none;
+  }
+  .tableau, .tableau tbody, .tableau tr, .tableau td {
+    display: block;
+    width: 100%;
+  }
+  .tableau tr {
+    border-bottom: 1px solid var(--bord);
+    padding: 8px 0;
+  }
+  .tableau td {
+    border: none;
+    padding: 6px 16px;
+  }
+  .tableau td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 12px;
+    color: var(--texte-doux);
+  }
+  .cellule-actions {
+    text-align: left;
+  }
+  .relances li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .segment {
+    transition: none;
+  }
+}

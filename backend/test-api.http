@@ -1,0 +1,74 @@
+### Inscription
+POST http://localhost:8081/api/auth/register
+Content-Type: application/json
+
+{
+  "nom": "Papa",
+  "email": "papa@test.com",
+  "password": "MotDePasse1!"
+}
+
+### Connexion (copier le token reçu dans la variable ci-dessous)
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "papa@test.com",
+  "password": "123456"
+}
+
+@token = eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwYXBhQHRlc3QuY29tIiwiaWF0IjoxNzkzNTcxMDM4LCJleHAiOjE3OTM2NTc0Mzh9.SFebWQAO3v8E_vEnQr7aoUZzOj5B-iTgv_IuRGQpsSMpzBCzIYzrNEyNrd63qJOf
+
+### Ajouter une candidature
+POST http://localhost:8081/api/candidatures
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "entreprise": "Capgemini",
+  "poste": "Stage développeur Java",
+  "lieu": "Strasbourg",
+  "dateCandidature": "2026-10-01",
+  "statut": "ENVOYEE",
+  "lienOffre": "https://exemple.com/offre",
+  "notes": "Relancer dans 10 jours"
+}
+
+### Lister mes candidatures
+GET http://localhost:8081/api/candidatures
+Authorization: Bearer {{token}}
+
+### Filtrer par statut
+GET http://localhost:8081/api/candidatures?statut=ENVOYEE
+Authorization: Bearer {{token}}
+
+### Candidatures à relancer
+GET http://localhost:8081/api/candidatures/relances
+Authorization: Bearer {{token}}
+
+### Marquer une candidature comme relancée (relance suivante dans 7 jours)
+POST http://localhost:8081/api/candidatures/1/relancer
+Authorization: Bearer {{token}}
+
+### Statistiques
+GET http://localhost:8081/api/candidatures/stats
+Authorization: Bearer {{token}}
+
+### Modifier une candidature
+PUT http://localhost:8081/api/candidatures/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "entreprise": "Capgemini",
+  "poste": "Stage développeur Java",
+  "lieu": "Strasbourg",
+  "dateCandidature": "2026-10-01",
+  "statut": "ENTRETIEN",
+  "lienOffre": "https://exemple.com/offre",
+  "notes": "Entretien prévu le 15/10"
+}
+
+### Supprimer une candidature
+DELETE http://localhost:8081/api/candidatures/1
+Authorization: Bearer {{token}}
