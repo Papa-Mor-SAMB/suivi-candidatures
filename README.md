@@ -2,7 +2,7 @@
 
 Application web pour suivre ses candidatures de stage et d'emploi : de l'envoi jusqu'à la réponse, avec des rappels de relance.
 
-![CI](https://github.com/VOTRE-PSEUDO/suivi-candidatures/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Papa-Mor-SAMB/suivi-candidatures/actions/workflows/ci.yml/badge.svg)
 
 ## Fonctionnalités
 
