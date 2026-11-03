@@ -36,9 +36,15 @@ function Dashboard({ nom, onLogout }) {
   async function charger() {
     setErreur("");
     try {
-      const liste = await getCandidatures(filtre);
-      const s = await getStats();
-      const r = await getRelances();
+            // les 3 requêtes partent en même temps au lieu d'attendre l'une après l'autre
+      const resultats = await Promise.all([
+        getCandidatures(filtre),
+        getStats(),
+        getRelances(),
+      ]);
+      const liste = resultats[0];
+      const s = resultats[1];
+      const r = resultats[2];
       setCandidatures(liste);
       setStats(s);
       setRelances(r);
